@@ -1,6 +1,7 @@
 require("dotenv").config();
 var express = require("express");
-var exphbs = require("express-handlebars");
+// Not using, delete?
+// var exphbs = require("express-handlebars");
 
 var db = require("./models");
 
