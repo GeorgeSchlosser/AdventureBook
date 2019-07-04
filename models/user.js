@@ -1,44 +1,21 @@
-
-var Sequelize = require("sequelize");
-
-var sequelize = require("../config/connection.js");
-
-var User = sequelize.define('users', {        
+module.exports = function(sequelize, DataTypes) {
+  var User = sequelize.define("users", {        
     id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
     user_name: {
-        type: Sequelize.STRING,
-        // validate: {
-        //   isUnique: function(value, next) {
-        //     User.find({
-        //       where: {user_name: value},
-        //       attributes: ["id"]
-        //     })
-        //     .done(function(err, user) {
-        //       if (err) {
-        //       return next(err);
-        //     }
-        //     if (user) {
-        //       return next("User name already in use")
-        //     }
-        //       next()
-        //     });
-        //   }
-        // }
+        type: DataTypes.STRING
     },
     password: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
         validate: {
           len: [4]
         },
       },
-    currentLocation: Sequelize.STRING,  
+    currentLocation: DataTypes.STRING,  
 });
-
-User.sync();
-
-module.exports = User
+  return User;
+};

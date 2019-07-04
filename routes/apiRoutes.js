@@ -2,6 +2,28 @@
 var db = require("../models");
 
 module.exports = function(app) {
+  // Get games won
+  app.get("/api/wins", function(req, res) {
+    db.wins.count({
+      where: {
+        games_won: 0
+      }
+    }).then(function(count) {
+        res.json(count)
+    });
+  });
+
+  // Game win event pushes new row to games_won table
+  app.post("/api/wins", function(req, res) {
+    console.log("New winner!");
+    console.log(req.body);
+    db.wins.create({
+      games_won: 0
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
   // Get all users
   app.get("/api/all", function(req, res) {
     db.User.findAll({}).then(function(results) {
