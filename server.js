@@ -5,6 +5,8 @@ var passport = require('passport');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 // var db = require("./models");
+//env
+// require('dotenv').load();
 
 var app = express();
 var PORT = process.env.PORT || 8080;
@@ -12,7 +14,8 @@ var PORT = process.env.PORT || 8080;
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+// app.use(express.json());
+app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // Handlebars
@@ -41,7 +44,7 @@ var models = require('./models');
 require('./routes/auth.js')(app, passport, models);
 
 //load passport strategies
-require('./app/config/passport/passport.js')(passport, models);
+require('./config/passport/passport.js')(passport, models);
 
 var syncOptions = { force: false };
 

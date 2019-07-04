@@ -1,16 +1,16 @@
 
-var Sequelize = require("sequelize");
+// var Sequelize = require("sequelize");
 
-var sequelize = require("../config/connection.js");
+// var sequelize = require("../config/connection.js");
 
-var User = sequelize.define('users', {        
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-    },
-    user_name: {
-        type: Sequelize.STRING,
+// var User = sequelize.define('users', {        
+//     id: {
+//         type: Sequelize.INTEGER,
+//         autoIncrement: true,
+//         primaryKey: true
+//     },
+//     user_name: {
+//         type: Sequelize.STRING,
         // validate: {
         //   isUnique: function(value, next) {
         //     User.find({
@@ -28,17 +28,47 @@ var User = sequelize.define('users', {
         //     });
         //   }
         // }
+//     },
+//     password: {
+//         type: Sequelize.STRING,
+//         allowNull: true,
+//         validate: {
+//           len: [4]
+//         },
+//       },
+//     currentLocation: Sequelize.STRING,  
+// });
+
+// User.sync();
+
+// module.exports = User
+
+'use strict';
+module.exports = function(sequelize, Sequelize) {
+  var User = sequelize.define('user', {
+    username: {
+      type: Sequelize.STRING,
+      notEmpty: true
     },
+
     password: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        validate: {
-          len: [4]
-        },
-      },
-    currentLocation: Sequelize.STRING,  
-});
+      type: Sequelize.STRING,
+      allowNull: false
+    },
 
-User.sync();
+    lastlogin: {
+      type: Sequelize.DATE
+    },
 
-module.exports = User
+    status: {
+      type: Sequelize.ENUM('active', 'inactive'),
+      defaultValue: 'active'
+    }
+  });
+
+  User.associate = function(models) {
+    models.user.belongsToMany(models.group, {through: 'groupusers'});
+  };
+
+  return User;
+};

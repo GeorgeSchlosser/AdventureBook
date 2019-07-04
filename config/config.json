@@ -5,6 +5,7 @@
     "database": "story_db",
     "host": "localhost",
     "dialect": "mysql"
+    
   },
   "test": {
     "username": "root",
