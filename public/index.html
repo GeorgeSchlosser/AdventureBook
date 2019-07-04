@@ -24,27 +24,29 @@
 
                         <p class="subtitle is-3"><b>Choose your own adventure, the story is yours for the writing.</b>
                         </p>
-                        <form>
+                        <form class="register-form" id="signup" name="signup" method="post" action="signup">
                             <div class="column is-8 is-offset-2">
                                 <div class="center-text">
                                     <div class="field">
                                         <label class="label">Username</label>
                                         <div class="control">
-                                            <input class="input" type="text" placeholder="Create Username">
+                                            <!-- <input class="input" type="text" placeholder="Create Username"> -->
+                                            <input class="input text" name="username" type="text" placeholder="username" />
                                         </div>
                                     </div>
 
                                     <div class="field">
                                         <label class="label">Password</label>
                                         <p class="control has-icons-left">
-                                            <input class="input" type="password" placeholder="Password">
+                                            <!-- <input class="input" type="password" placeholder="Password"> -->
+                                            <input class="input" name="password" type="password" placeholder="password" />
                                             <span class="icon is-small is-left">
                                                 <i class="fas fa-lock"></i>
                                             </span>
                                         </p>
                                     </div>
 
-                                    <div class="field">
+                                    <!-- <div class="field">
 
                                         <p class="control has-icons-left">
                                             <input class="input" type="password" placeholder="Verify Password">
@@ -52,39 +54,45 @@
                                                 <i class="fas fa-lock"></i>
                                             </span>
                                         </p>
-                                    </div>
+                                    </div> -->
 
-                                    <a class="button is-medium" href="main.html" target="">
+                                    <!-- <a class="button is-medium" href="main.html" target="">
 
                                         <span>Create</span>
-                                    </a>
+                                    </a> -->
+
+                                    <button class="button is-medium" type="submit" value="Sign Up">create</button>
 
                         </form>
                         <hr>
-                        <form>
+                        <form class="login-form" id="signin" name="signin" method="post" action="signin">
                             <div class="field">
                                 <label class="label">Returning Users</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Input Username">
-
+                                    <!-- <input class="input" type="text" placeholder="Input Username"> -->
+                                    <!-- class: input restored style -->
+                                    <input class="input text" name="username" type="text" placeholder="username" />
 
                                 </div>
                             </div>
                             <div class="field">
                                 <p class="control has-icons-left">
-                                    <input class="input" type="password" placeholder="Password">
+                                    <!-- <input class="input" type="password" placeholder="Password"> -->
+                                    <input class="input" name="password" type="password" placeholder="password" />
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </p>
                             </div>
-                            <a class="button is-medium" href="main.html" target="">
+                                <!-- <a class="button is-medium" href="main.html" target="">
 
-                                <span>Begin</span>
-                            </a>
-                    </div>
-                </div>
-                </form>
+                                    <span>Begin</span>
+                                </a> -->
+
+                                <button class="button is-medium" type="submit" value="Sign In">Begin</button>
+                            </div>
+                        </div>
+                    </form>
 
             </div>
         </div>
@@ -92,6 +100,8 @@
         </div>
 
     </section>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 
 </html>
