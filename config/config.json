@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "str1d3r",
     "database": "story_db",
     "host": "localhost",
     "dialect": "mysql"
