@@ -29,6 +29,7 @@ app.use(express.static("public"));
 
 // For Passport
 app.use(
+  // hashing session cookies prevents user alteration
   session({ secret: 'worth-it', resave: true, saveUninitialized: true })
 ); // session secret
 app.use(passport.initialize());
