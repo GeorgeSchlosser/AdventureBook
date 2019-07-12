@@ -26,14 +26,14 @@ module.exports = function(app) {
 
   // Get all users
   app.get("/api/all", function(req, res) {
-    db.users.findAll({}).then(function(results) {
+    db.User.findAll({}).then(function(results) {
       res.json(results);
     });
   });
 
   // Get a returning user
   app.get("/api/users/:user", function(req, res) {
-    db.users.findOne({
+    db.User.findOne({
       where: {
         user_name:req.params.user_name,
         password: req.params.password
@@ -45,7 +45,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/users", function(req, res) {
-    db.users.findOne({
+    db.User.findOne({
       where: {
         user_name:req.body.user_name
       }
@@ -59,7 +59,7 @@ module.exports = function(app) {
   app.post("/api/new", function(req, res) {
     console.log("User Data:");
     console.log(req.body);
-    db.users.create({
+    db.User.create({
       user_name: req.body.user_name,
       password: req.body.password
     }).then(function(results) {
